@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>호랑이 페이지</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+        }
+
+        h1 {
+            color: #ff6b35;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tiger {
+            font-size: 150px;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        .info {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .roar-btn {
+            margin-top: 30px;
+            padding: 15px 40px;
+            font-size: 1.3em;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .roar-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .roar-btn:active {
+            transform: scale(0.95);
+        }
+
+        .sound-text {
+            font-size: 2em;
+            color: #ff6b35;
+            font-weight: bold;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .sound-text.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐯 호랑이의 세계 🐯</h1>
+
+        <div class="tiger" onclick="roar()">🐅</div>
+
+        <div class="info">
+            <p><strong>호랑이</strong>는 고양이과에 속하는 맹수로,</p>
+            <p>용맹함과 힘의 상징입니다.</p>
+            <p>한국에서는 예로부터 산신령의 화신으로 여겨졌습니다.</p>
+        </div>
+
+        <button class="roar-btn" onclick="roar()">어흥! 🦁</button>
+
+        <div class="sound-text" id="soundText">어흥!!! 🐯</div>
+    </div>
+
+    <script>
+        function roar() {
+            const soundText = document.getElementById('soundText');
+            const tiger = document.querySelector('.tiger');
+
+            soundText.classList.add('show');
+            tiger.style.transform = 'scale(1.3)';
+
+            setTimeout(() => {
+                soundText.classList.remove('show');
+                tiger.style.transform = 'scale(1)';
+            }, 1000);
+        }
+
+        // 호랑이를 클릭하면 랜덤하게 움직임
+        document.querySelector('.tiger').addEventListener('click', function() {
+            this.style.transition = 'transform 0.5s';
+        });
+    </script>
+</body>
+</html>
